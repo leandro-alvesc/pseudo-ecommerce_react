@@ -51,7 +51,10 @@ class ProvedorProduto extends Component {
         const price = product.price;
         product.total = price;
         this.setState(()=>{
-            return {products: tempProducts, cart:[...this.state.cart, product]}
+            return {
+                products: tempProducts, 
+                cart:[...this.state.cart, product]
+            }
         },
         () => {
             this.addTotals();
@@ -137,10 +140,13 @@ class ProvedorProduto extends Component {
     }
     addTotals = () =>{
         let subTotal = 0;
+        let countTotal = 0;
+        this.state.cart.map(item => (countTotal += item.count))
         this.state.cart.map(item =>(subTotal += item.total));
-        const tempTax = subTotal >= 250 ? 0 : 10 * this.state.cart.length;
+        const tempTax = subTotal >= 250 ? 0 : 10 * countTotal;
         const tax = parseFloat(tempTax.toFixed(2));
         const total = subTotal + tax;
+
         this.setState(()=>{
             return{
                 cartSubTotal:subTotal,
