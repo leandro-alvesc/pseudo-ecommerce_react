@@ -32,4 +32,5 @@ Sendo assim, deixo registrado meus agradecimentos à:
 - John Smilga (Coding Addict)
 - Deven Rathore (sitepoint)
 - Flavio Copes
+
 Muito obrigado pela ajuda nessa conquista!
