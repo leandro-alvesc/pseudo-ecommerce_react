@@ -27,8 +27,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Agradecimentos:
 
-É a minha primeira aplicação utilizando React, então não seria possível sem ajuda de diversos tutoriais e documentos.
-Então deixo registrado meus agradecimentos à:
+Essa foi minha primeira aplicação utilizando React, então não seria possível sem ajuda de diversos tutoriais e documentos.
+Sendo assim, deixo registrado meus agradecimentos à:
 - John Smilga (Coding Addict)
 - Deven Rathore (sitepoint)
 - Flavio Copes
+Muito obrigado pela ajuda nessa conquista!
