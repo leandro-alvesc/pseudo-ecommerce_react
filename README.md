@@ -2,6 +2,8 @@
 
 Esse projeto foi feito para um React Challenge, consiste em construir uma interface de um pseudo e-commerce de games, utilizando React.
 
+Link para teste: [Pseudo e-Commerce com React](https://pseudo-ecommerce-react.netlify.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Ferramentas Utilizadas
