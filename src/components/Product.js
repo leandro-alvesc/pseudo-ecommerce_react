@@ -21,10 +21,7 @@ export default class Product extends Component {
                   <img src={image} alt="produto" className="card-img-top" />
                 </Link>
                 {inCart ? (
-                  <p className="incart">
-                    {" "}
-                    No Carrinho
-                  </p>
+                  <p className="incart"> No Carrinho</p>
                 ) : (
                   <button
                     className="cart-btn"
