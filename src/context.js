@@ -15,7 +15,8 @@ class ProvedorProduto extends Component {
         modalProduct:detalheProduto,
         cartSubTotal:0,
         cartTax:0,
-        cartTotal:0
+        cartTotal:0,
+        cartItems:0
     }
     componentDidMount() {
         this.setProdutcs();
@@ -29,6 +30,10 @@ class ProvedorProduto extends Component {
         this.setState(()=>{
             return {products:tempProducts}
         });
+    }
+
+    getCartTotal = () => {
+        return this.cartTotal;
     }
 
     getItem = (id) =>{
@@ -53,7 +58,8 @@ class ProvedorProduto extends Component {
         this.setState(()=>{
             return {
                 products: tempProducts, 
-                cart:[...this.state.cart, product]
+                cart:[...this.state.cart, product],
+                cartItems:this.state.cartItems += 1
             }
         },
         () => {
@@ -82,7 +88,8 @@ class ProvedorProduto extends Component {
 
         this.setState(()=>{
             return{
-                cart:[...tempCart]
+                cart:[...tempCart],
+                cartItems:this.state.cartItems += 1
             }
         },()=>{
             this.addTotals()
@@ -102,7 +109,8 @@ class ProvedorProduto extends Component {
             product.total = product.count * product.price;
             this.setState(()=>{
                 return{
-                    cart:[...tempCart]
+                    cart:[...tempCart],
+                    cartItems:this.state.cartItems -= 1
                 }
             },()=>{
                 this.addTotals()
@@ -118,13 +126,15 @@ class ProvedorProduto extends Component {
         const index = tempProducts.indexOf(this.getItem(id));
         let removedProduct = tempProducts[index];
         removedProduct.inCart = false;
+        const tempCartItems = removedProduct.count;
         removedProduct.count = 0;
         removedProduct.total = 0;
 
         this.setState(()=>{
             return {
                 cart:[...tempCart],
-                products:[...tempProducts]
+                products:[...tempProducts],
+                cartItems:this.state.cartItems -= tempCartItems
             }
         },()=>{
             this.addTotals();
@@ -132,7 +142,10 @@ class ProvedorProduto extends Component {
     }
     clearCart = () =>{
         this.setState(()=>{
-            return {cart: []}
+            return {
+                cart: [],
+                cartItems: 0
+            }
         },()=>{
             this.setProdutcs();
             this.addTotals();
@@ -217,7 +230,8 @@ class ProvedorProduto extends Component {
                 clearCart:this.clearCart,
                 sortName:this.sortName,
                 sortPrice:this.sortPrice,
-                sortScore:this.sortScore
+                sortScore:this.sortScore,
+                getCartTotal:this.getCartTotal
             }}>
                 {this.props.children}
             </ContextProduto.Provider>

@@ -41,6 +41,17 @@ export const ProductWrapper = styled.div`
     border-radius: 0 0 0 0.2rem;
     transform: translate(100%, -100%);
 }
+.incart {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.2rem 0.4rem;
+    background: var(--lightGreen);
+    border: none;
+    color: var(--mainWhite);
+    font-size:1.6rem;
+    border-radius: 0 0 0 0.2rem;
+}
 .img-container:hover .cart-btn{
     transform: translate(0, 0);
     transition: all 0.2s linear;
