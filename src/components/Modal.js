@@ -24,7 +24,7 @@ export default class Modal extends Component {
                                             <h5>item no carrinho</h5>
                                             <img src={image} className="img-fuild" alt="produto" />
                                             <h5>{name}</h5>
-                                            <h5 className="text-muted">preço: R$ {price}</h5>
+                                            <h5 className="text-muted">preço: R$ {price.toString().replace(".", ",")}</h5>
                                             <Link to='/'>
                                                 <ButtonContainer onClick={()=>closeModal()}>
                                                     produtos
