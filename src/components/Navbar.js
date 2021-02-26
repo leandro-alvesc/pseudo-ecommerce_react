@@ -1,22 +1,48 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import logo from "../logo.svg";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 import { ConsumerProduto } from "../context";
 
 const Navbar = () => {
-    return (
-      <ConsumerProduto>
-          {(value) => {const { cartItems } = value;
-          console.log(value);
-          return(
+  return (
+    <ConsumerProduto>
+      {(value) => {
+        const { cartItems } = value;
+        console.log(value);
+        return (
           <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
             <Link to="/">
               <img src={logo} alt="loja" className="navbar-brand" />
             </Link>
             <ul className="navbar-nav align-items-center">
-              <li className="nav-item ml-5">Produtos</li>
+              <Switch>
+                <Route exact path="/">
+                  {() => {
+                    return <li className="nav-item ml-5">Produtos</li>;
+                  }}
+                </Route>
+                {/* 
+                <Route path="/details">
+                  {() => {
+                    return <li className="nav-item ml-5">Detalhes</li>;
+                  }}
+                </Route>
+                */}
+                <Route path="/cart">
+                  {() => {
+                    return <li className="nav-item ml-5">Carrinho</li>;
+                  }}
+                </Route>
+                <Route>
+                  {() => {
+                    return (
+                      <li className="nav-item ml-5">Página não encontrada</li>
+                    );
+                  }}
+                </Route>
+              </Switch>
             </ul>
             <Link to="/cart" className="ml-auto">
               <ButtonContainer>
@@ -27,10 +53,11 @@ const Navbar = () => {
               </ButtonContainer>
             </Link>
           </NavWrapper>
-          )}}
-      </ConsumerProduto>
-    );
-}
+        );
+      }}
+    </ConsumerProduto>
+  );
+};
 
 const NavWrapper = styled.nav`
     .nav-link{
