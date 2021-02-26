@@ -19,15 +19,15 @@ export default function CartTotal({ value }) {
             </Link>
             <h5>
               <span className="text-title">subtotal:</span>
-              <strong>R$ {cartSubTotal.toFixed(2)}</strong>
+              <strong>R$ {cartSubTotal.toFixed(2).toString().replace(".", ",")}</strong>
             </h5>
             <h5>
               <span className="text-title">frete:</span>
-              <strong>R$ {cartTax}</strong>
+              <strong>R$ {cartTax.toFixed(2).toString().replace(".", ",")}</strong>
             </h5>
             <h5>
               <span className="text-title">total:</span>
-              <strong>R$ {cartTotal.toFixed(2)}</strong>
+              <strong>R$ {cartTotal.toFixed(2).toString().replace(".", ",")}</strong>
             </h5>
           </div>
         </div>

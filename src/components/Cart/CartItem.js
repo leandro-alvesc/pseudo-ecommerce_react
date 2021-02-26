@@ -12,7 +12,7 @@ export default function CartItem({item,value}) {
                 <span className="d-lg-2">{name}</span>
             </div>
             <div className="col-10 mx-auto col-lg-2">
-                <span className="d-lg-2">R${price}</span>
+                <span className="d-lg-2">R$ {price.toString().replace(".", ",")}</span>
             </div>
             <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
                 <div className="d-flex justify-content-center">
@@ -27,7 +27,7 @@ export default function CartItem({item,value}) {
                 </div>
             </div>
             <div className="col-10 mx-auto col-lg-2">
-                <strong>R${total.toFixed(2)}</strong>
+                <strong>R$ {total.toFixed(2).toString().replace(".", ",")}</strong>
             </div>
         </div>
     )
