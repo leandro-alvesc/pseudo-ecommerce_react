@@ -5,9 +5,12 @@ const ContextProduto = React.createContext();
 
 class ProvedorProduto extends Component {
   state = {
-    sortTypeName: true,
-    sortTypePrice: true,
-    sortTypeScore: true,
+    sortTypeName: "empty",
+    arrowName: "fas fa-sort",
+    sortTypePrice: "empty",
+    arrowPrice: "fas fa-sort",
+    sortTypeScore: "empty",
+    arrowScore: "fas fa-sort",
     products: [],
     detalheProduto: detalheProduto,
     cart: [],
@@ -105,10 +108,10 @@ class ProvedorProduto extends Component {
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
 
-    product.count -= 1;
-    if (product.count === 0) {
-      this.removeItem(id);
+    if (product.count <= 1) {
+      return;
     } else {
+      product.count -= 1;
       product.total = product.count * product.price;
       this.setState(
         () => {
@@ -180,49 +183,76 @@ class ProvedorProduto extends Component {
   };
   sortName = () => {
     let tempProducts = [...this.state.products];
-    if (this.sortTypeName) {
-      this.sortTypeName = false;
+    this.sortTypePrice = "empty";
+    this.sortTypeScore = "empty";
+    let tempArrowName = "";
+    if (this.sortTypeName == "empty") this.sortTypeName = "up";
+    if (this.sortTypeName == "up") {
+      tempArrowName = "fas fa-sort-down";
+      this.sortTypeName = "down";
       tempProducts.sort((a, b) => (a.name < b.name ? 1 : -1));
     } else {
-      this.sortTypeName = true;
+      tempArrowName = "fas fa-sort-up";
+      this.sortTypeName = "up";
       tempProducts.sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
     this.setState(() => {
       return {
         products: [...tempProducts],
+        arrowName: tempArrowName,
+        arrowPrice: "fas fa-sort",
+        arrowScore: "fas fa-sort",
       };
     });
   };
   sortPrice = () => {
     let tempProducts = [...this.state.products];
-    if (this.sortTypePrice) {
-      this.sortTypePrice = false;
+    this.sortTypeName = "empty";
+    this.sortTypeScore = "empty";
+    let tempArrowPrice = "";
+    if (this.sortTypePrice == "empty") this.sortTypeName = "up";
+    if (this.sortTypePrice == "up") {
+      tempArrowPrice = "fas fa-sort-down";
+      this.sortTypePrice = "down";
       tempProducts.sort((a, b) => (a.price < b.price ? 1 : -1));
     } else {
-      this.sortTypePrice = true;
+      tempArrowPrice = "fas fa-sort-up";
+      this.sortTypePrice = "up";
       tempProducts.sort((a, b) => (a.price > b.price ? 1 : -1));
     }
 
     this.setState(() => {
       return {
         products: [...tempProducts],
+        arrowName: "fas fa-sort",
+        arrowPrice: tempArrowPrice,
+        arrowScore: "fas fa-sort",
       };
     });
   };
   sortScore = () => {
     let tempProducts = [...this.state.products];
-    if (this.sortTypeScore) {
-      this.sortTypeScore = false;
+    this.sortTypeName = "empty";
+    this.sortTypePrice = "empty";
+    let tempArrowScore = "";
+    if (this.sortTypePrice == "empty") this.sortTypeName = "up";
+    if (this.sortTypeScore == "up") {
+      tempArrowScore = "fas fa-sort-down";
+      this.sortTypeScore = "down";
       tempProducts.sort((a, b) => (a.score > b.score ? 1 : -1));
     } else {
-      this.sortTypeScore = true;
+      tempArrowScore = "fas fa-sort-up";
+      this.sortTypeScore = "up";
       tempProducts.sort((a, b) => (a.score < b.score ? 1 : -1));
     }
 
     this.setState(() => {
       return {
         products: [...tempProducts],
+        arrowName: "fas fa-sort",
+        arrowPrice: "fas fa-sort",
+        arrowScore: tempArrowScore,
       };
     });
   };

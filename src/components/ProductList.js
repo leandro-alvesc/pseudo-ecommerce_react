@@ -13,7 +13,14 @@ export default class ProductList extends Component {
             <div>
               <ConsumerProduto>
                 {(value) => {
-                  const { sortName, sortPrice, sortScore } = value;
+                  const {
+                    sortName,
+                    sortPrice,
+                    sortScore,
+                    arrowName,
+                    arrowPrice,
+                    arrowScore,
+                  } = value;
                   return (
                     <p>
                       Ordenar por:
@@ -21,19 +28,19 @@ export default class ProductList extends Component {
                         className="btn btn-black mx-1"
                         onClick={() => sortName()}
                       >
-                        Nome
+                        Nome <i className={arrowName} />
                       </span>
                       <span
                         className="btn btn-black mx-1"
                         onClick={() => sortPrice()}
                       >
-                        Preço
+                        Preço <i className={arrowPrice} />
                       </span>
                       <span
                         className="btn btn-black mx-1"
                         onClick={() => sortScore()}
                       >
-                        Score
+                        Score <i className={arrowScore} />
                       </span>
                     </p>
                   );

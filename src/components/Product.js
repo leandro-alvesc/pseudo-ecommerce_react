@@ -22,7 +22,6 @@ function Product(props) {
               {inCart ? (
                 <button
                   className="incart"
-                  // disabled={inCart ? true : false}
                   onClick={() => {
                     value.removeItem(id);
                   }}
