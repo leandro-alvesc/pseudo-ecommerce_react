@@ -5,11 +5,11 @@ const ContextProduto = React.createContext();
 
 class ProvedorProduto extends Component {
   state = {
-    sortTypeName: "empty",
+    sortTypeName: true,
     arrowName: "fas fa-sort",
-    sortTypePrice: "empty",
+    sortTypePrice: true,
     arrowPrice: "fas fa-sort",
-    sortTypeScore: "empty",
+    sortTypeScore: true,
     arrowScore: "fas fa-sort",
     products: [],
     detalheProduto: detalheProduto,
@@ -183,17 +183,14 @@ class ProvedorProduto extends Component {
   };
   sortName = () => {
     let tempProducts = [...this.state.products];
-    this.sortTypePrice = "empty";
-    this.sortTypeScore = "empty";
     let tempArrowName = "";
-    if (this.sortTypeName == "empty") this.sortTypeName = "up";
-    if (this.sortTypeName == "up") {
+    if (this.sortTypeName == true) {
       tempArrowName = "fas fa-sort-down";
-      this.sortTypeName = "down";
+      this.sortTypeName = false;
       tempProducts.sort((a, b) => (a.name < b.name ? 1 : -1));
     } else {
       tempArrowName = "fas fa-sort-up";
-      this.sortTypeName = "up";
+      this.sortTypeName = true;
       tempProducts.sort((a, b) => (a.name > b.name ? 1 : -1));
     }
 
@@ -203,22 +200,21 @@ class ProvedorProduto extends Component {
         arrowName: tempArrowName,
         arrowPrice: "fas fa-sort",
         arrowScore: "fas fa-sort",
+        sortTypePrice: true,
+        sortTypeScore: true,
       };
     });
   };
   sortPrice = () => {
     let tempProducts = [...this.state.products];
-    this.sortTypeName = "empty";
-    this.sortTypeScore = "empty";
     let tempArrowPrice = "";
-    if (this.sortTypePrice == "empty") this.sortTypeName = "up";
-    if (this.sortTypePrice == "up") {
+    if (this.sortTypePrice == true) {
       tempArrowPrice = "fas fa-sort-down";
-      this.sortTypePrice = "down";
+      this.sortTypePrice = false;
       tempProducts.sort((a, b) => (a.price < b.price ? 1 : -1));
     } else {
       tempArrowPrice = "fas fa-sort-up";
-      this.sortTypePrice = "up";
+      this.sortTypePrice = true;
       tempProducts.sort((a, b) => (a.price > b.price ? 1 : -1));
     }
 
@@ -228,22 +224,21 @@ class ProvedorProduto extends Component {
         arrowName: "fas fa-sort",
         arrowPrice: tempArrowPrice,
         arrowScore: "fas fa-sort",
+        sortTypeName: true,
+        sortTypeScore: true,
       };
     });
   };
   sortScore = () => {
     let tempProducts = [...this.state.products];
-    this.sortTypeName = "empty";
-    this.sortTypePrice = "empty";
     let tempArrowScore = "";
-    if (this.sortTypePrice == "empty") this.sortTypeName = "up";
-    if (this.sortTypeScore == "up") {
+    if (this.sortTypeScore == true) {
       tempArrowScore = "fas fa-sort-down";
-      this.sortTypeScore = "down";
+      this.sortTypeScore = false;
       tempProducts.sort((a, b) => (a.score > b.score ? 1 : -1));
     } else {
       tempArrowScore = "fas fa-sort-up";
-      this.sortTypeScore = "up";
+      this.sortTypeScore = true;
       tempProducts.sort((a, b) => (a.score < b.score ? 1 : -1));
     }
 
@@ -253,6 +248,8 @@ class ProvedorProduto extends Component {
         arrowName: "fas fa-sort",
         arrowPrice: "fas fa-sort",
         arrowScore: tempArrowScore,
+        sortTypeName: true,
+        sortTypePrice: true,
       };
     });
   };
